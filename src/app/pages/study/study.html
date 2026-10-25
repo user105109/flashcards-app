@@ -1,0 +1,14 @@
+<div class="flex flex-col space-y-5">
+  <h2 class="text-2xl font-bold tracking-tight text-slate-900">Flash Cards</h2>
+
+  <app-progress-bar [totalCards]="totalCards" [progress]="index() + 1" />
+
+  <app-flashcard [hideAnswer]="hideAnswerFlag()" [currentCard]="currentFlashCard()" />
+
+  <app-navigation-ctrl
+    (forwardButtonClick)="goToNextCard()"
+    (backwardButtonClick)="goToPreviousCard()"
+    (showOrHideAnswer)="showOrHideAnswer()"
+    [showOrHideText]="showOrHideText()"
+  />
+</div>
