@@ -1,59 +1,123 @@
-# FlashcardsApp
+# Flashcards App 🎴
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.28.
+A flashcard app built with **Angular 21** to quiz yourself on Spring Boot concepts. It's my first Angular project, built from the [roadmap.sh Flash Cards project](https://roadmap.sh/projects/flash-cards). It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 21.2.28.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Pre-defined flashcards with questions and answers
+- One card at a time, with the answer hidden until you reveal it
+- A single Show/Hide Answer button whose label follows the current state
+- Previous/Next navigation that stops at the first and last card
+- Progress indicator: "Card 3/10" plus a progress bar
+- Two pages with routing: **Study** and **About**, without page reloads
+- Every new card starts with the answer hidden
+
+## Angular concepts used
+
+| Concept | Where it's used |
+|---|---|
+| Components and composition | `Flashcard`, `NavigationCtrl` and `ProgressBar` are composed inside the `Study` page |
+| Property binding | Parent passes `[currentCard]`, `[hideAnswer]`, `[progress]` and `[totalCards]` to children |
+| Event binding / `@Output` | `NavigationCtrl` emits clicks, and the parent handles them |
+| Signals and `computed` | Current index, answer visibility, current card and button label |
+| Routing and lazy loading | `loadComponent` for the `study` and `about` routes, with `routerLink` navigation |
+| Dumb (presentational) components | The card and progress bar only display what they receive |
+
+Not used yet (planned): forms, services and dependency injection, deferrable views.
+
+## Project structure
+
+```
+src/app/
+├── components/
+│   ├── flashcard/         # displays one question and its answer
+│   ├── navigation-ctrl/   # previous / next / show-hide buttons
+│   └── progress-bar/      # "Card X/Y" text and progress bar
+├── pages/
+│   ├── study/             # main study screen
+│   └── about/             # about page
+├── models/                # FlashcardData interface
+├── data/                  # flashcards.data.ts
+├── app.ts                 # root component: links and <router-outlet />
+├── app.config.ts
+└── app.routes.ts
+```
+
+## Getting started
+
+### Prerequisites
+
+- Node.js (v20.19.0 or higher)
+- npm
+
+### Installation
+
+```bash
+git clone <your-repo-url>
+cd flashcards-app
+npm install
+```
+
+### Development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200/`. The app reloads automatically when you change a source file.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Code scaffolding
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+For the full list of schematics (components, directives, pipes...), run `ng generate --help`.
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Building
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are stored in the `dist/` directory. The production build is optimized for performance.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Running unit tests
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+Tests run with [Vitest](https://vitest.dev/).
 
-For end-to-end (e2e) testing, run:
+### Running end-to-end tests
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Angular CLI doesn't include an e2e framework by default, so you need to pick one first.
 
-## Additional Resources
+## Future improvements
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [ ] Add a form to create custom flashcards
+- [ ] Move the session state (index, answer visibility) into a service so it survives page changes
+- [ ] Persist cards with localStorage
+- [ ] Categories and tags
+- [ ] Shuffle card order
+- [ ] Track which cards were answered correctly
+- [ ] Dark mode
+
+## What I learned
+
+- Splitting a screen into small components that communicate with `@Input` and `@Output`
+- Keeping components reusable by passing them data instead of letting them fetch it
+- Managing state with signals and `computed`
+- Single-page navigation with the Angular Router and lazy loading
+
+## Resources
+
+- [Angular documentation](https://angular.dev)
+- [Angular CLI reference](https://angular.dev/tools/cli)
+- [Angular Signals guide](https://angular.dev/guide/signals)
+- [roadmap.sh Flash Cards project](https://roadmap.sh/projects/flash-cards)
