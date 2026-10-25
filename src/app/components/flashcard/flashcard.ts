@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {flashcards} from '../../data/flashcards.data';
+import {FlashcardData} from '../../models/flashcard.model';
 
 @Component({
   selector: 'app-flashcard',
@@ -9,8 +9,6 @@ import {flashcards} from '../../data/flashcards.data';
   styleUrl: './flashcard.css',
 })
 export class Flashcard {
-  @Input() id: number = 0;
+  @Input() currentCard!: FlashcardData;
   @Input() hideAnswer: boolean = true;
-
-  protected readonly flashcards = flashcards;
 }

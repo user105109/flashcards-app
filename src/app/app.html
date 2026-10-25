@@ -1,8 +1,12 @@
-<app-progress-bar [totalCards]="totalCards" [progress]="index + 1"/>
-<app-flashcard [hideAnswer]="hideAnswerFlag" [id]="index"/>
-<app-navigation-ctrl
-  (forwardButtonClick)="goToNextCard()"
-  (backwardButtonClick)="goToPreviousCard()"
-  (showOrHideAnswer)="showOrHideAnswer()"
-  [showOrHideText]="showOrHideText"
-/>
+<div class="min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 space-y-6">
+
+    <nav class="flex space-x-4 border-b border-slate-100 pb-4 text-xs font-semibold uppercase tracking-wider">
+      <a routerLink="/study" routerLinkActive="text-indigo-600" class="text-slate-400 hover:text-slate-600 transition">Study</a>
+      <a routerLink="/about" routerLinkActive="text-indigo-600" class="text-slate-400 hover:text-slate-600 transition">About</a>
+    </nav>
+
+    <router-outlet />
+
+  </div>
+</div>

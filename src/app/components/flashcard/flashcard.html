@@ -1,3 +1,10 @@
-<p>{{flashcards[id].question}}</p>
-<p [hidden]="hideAnswer">{{flashcards[id].answer}}</p>
+<div class="bg-slate-50 border border-slate-200/60 rounded-xl p-6 min-h-[160px] flex flex-col justify-center space-y-4">
+  <p class="text-base sm:text-lg font-medium text-slate-800 text-center leading-relaxed">
+    {{ currentCard.question }}
+  </p>
 
+  <p [hidden]="hideAnswer"
+     class="text-sm sm:text-base text-indigo-900 bg-indigo-50/50 rounded-lg p-3 border border-indigo-100/50 text-center leading-relaxed transition-all">
+    {{ currentCard.answer }}
+  </p>
+</div>

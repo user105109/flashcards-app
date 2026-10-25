@@ -104,5 +104,10 @@ export const flashcards = [
     id: 18,
     question: "Qu'est-ce que ObservationRegistry introduit dans Spring 6 ?",
     answer: "C'est la nouvelle API unifiée pour l'observabilité. Elle remplace la séparation entre les métriques (Micrometer) et le traçage (Spring Cloud Sleuth). Elle permet d'enregistrer à la fois des métriques et des traces distribuées avec une seule configuration."
+  },
+  {
+    id: 19,
+    question: "test",
+    answer: "test"
   }
 ]
